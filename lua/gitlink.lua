@@ -11,7 +11,7 @@ end
 
 local function debug(msg)
   if M.options.debug then
-     print('DEBUG: ' .. msg)
+    print('DEBUG: ' .. msg)
   end
 end
 
