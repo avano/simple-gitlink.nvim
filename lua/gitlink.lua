@@ -78,7 +78,7 @@ function M.create_git_link()
     end
 
     -- get the current file path relative to the repository root
-    local file_path = vim.fn.expand('%:p'):gsub(vim.pesc(repo_root) .. '/', '')
+    local file_path = vim.api.nvim_buf_get_name(0):gsub(vim.pesc(repo_root) .. '/', '')
     debug('File path relative to the repository root: ' .. file_path)
     -- get the visual range start / end linenumbers
     local start_line, end_line = vim.fn.line('v'), vim.fn.line('.')
