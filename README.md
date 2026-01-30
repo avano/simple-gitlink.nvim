@@ -15,13 +15,13 @@ To use this plugin with the `lazy.nvim` plugin manager, add the following config
 ```lua
 return {
   'avano/simple-gitlink.nvim',
-  event = 'VeryLazy',
-  config = function()
-    require('gitlink').setup({
-      remotes = 'origin,upstream'
-    })
-    -- map the key binding in normal and visual mode
-    vim.keymap.set({'n', 'x'}, '<leader>gl', require('gitlink').create_git_link, { desc = 'Git: Link' })
-  end
+  main = 'gitlink',
+  opts = {
+      remotes = 'upstream,origin'
+  },
+  -- lazy load the plugin on the <leader>gl key binding in normal and visual mode
+  keys = {
+    { "<leader>gl", function() require('gitlink').create_git_link() end, mode = { 'n', 'x' }, desc = 'Git: Copy link' }
+  }
 }
 ```
